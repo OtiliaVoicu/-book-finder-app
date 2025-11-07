@@ -1,0 +1,232 @@
+:root {
+    --primary-color: #2c5282;
+    --primary-light: #4299e1;
+    --primary-dark: #1a365d;
+    --secondary-color: #ebf8ff;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --background: #f7fafc;
+    --card-shadow: 0 4px 6px rgba(44, 82, 130, 0.1);
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background);
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+    color: white;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: var(--card-shadow);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    letter-spacing: -0.5px;
+}
+
+.search-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 0 1rem;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: all var(--transition-speed) ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+#searchButton {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    box-shadow: var(--card-shadow);
+}
+
+#searchButton:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px rgba(44, 82, 130, 0.15);
+}
+
+#searchButton:active {
+    transform: translateY(0);
+}
+
+.results-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--card-shadow);
+    min-height: 200px;
+}
+
+.message {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.book-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(44, 82, 130, 0.15);
+}
+
+.book-cover {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--secondary-color);
+    transition: transform var(--transition-speed) ease;
+}
+
+.book-card:hover .book-cover {
+    transform: scale(1.02);
+}
+
+.book-info {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: linear-gradient(to bottom, white, var(--secondary-color));
+}
+
+.book-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.book-author {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.book-year {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.book-link {
+    display: inline-block;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all var(--transition-speed) ease;
+    text-align: center;
+    margin-top: auto;
+}
+
+.book-link:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header {
+        margin-bottom: 2rem;
+        padding: 1.5rem 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .search-section {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .book-cover {
+        height: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .books-grid {
+        grid-template-columns: 1fr;
+    }
+}
